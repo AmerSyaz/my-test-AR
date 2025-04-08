@@ -7,9 +7,11 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./assets/maxxwellcat.mind; uiError:no; uiLoading:no; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: ./assets/combine.mind; uiError:no; uiLoading:no; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="McatModel" src=" ./assets/maxwellglb.glb"></a-asset-item>
+        <a-asset-item id="OcatModel" src=" ./assets/oiiaioooooiai_cat.glb"></a-asset-item>
+        <a-asset-item id="PhoenixModel" src=" ./assets/phoenix_bird.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -17,52 +19,10 @@
       <a-entity mindar-image-target="targetIndex: 0">
         <a-gltf-model rotation="0 0 0 " position="0 -0.5 0" scale="0.4 0.4 0.4" src="#McatModel" animation-mixer>
       </a-entity>
-    </a-scene>
-
-    <a-scene mindar-image="imageTargetSrc: ./assets/oiiaioooooiai_cat.mind; uiError:no; uiLoading:no; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <a-asset-item id="OcatModel" src=" ./assets/oiiaioooooiai_cat.glb"></a-asset-item>
-      </a-assets>
-
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <a-entity mindar-image-target="targetIndex: 0">
+      <a-entity mindar-image-target="targetIndex: 1">
         <a-gltf-model rotation="0 0 0 " position="0 -1.0 0" scale="5.0 5.0 5.0" src="#OcatModel" animation-mixer>
       </a-entity>
-    </a-scene>
-
-    <a-scene mindar-image="imageTargetSrc: ./assets/earth.mind; uiError:no; uiLoading:no; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <a-asset-item id="EarthModel" src=" ./assets/a_windy_day.glb"></a-asset-item>
-      </a-assets>
-
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model rotation="0 0 0 " position="0 -1.0 0" scale="1.0 1.0 1.0" src="#EarthModel" animation-mixer>
-      </a-entity>
-    </a-scene>
-
-    <a-scene mindar-image="imageTargetSrc: ./assets/house.mind; uiError:no; uiLoading:no; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <a-asset-item id="HouseModel" src=" ./assets/the_last_stronghold_animated.glb"></a-asset-item>
-      </a-assets>
-
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model rotation="0 0 0 " position="0 -1.0 0" scale="0.1 0.1 0.1" src="#HouseModel" animation-mixer>
-      </a-entity>
-    </a-scene>
-
-    <a-scene mindar-image="imageTargetSrc: ./assets/phoenix.mind; uiError:no; uiLoading:no; uiScanning:no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <a-asset-item id="PhoenixModel" src=" ./assets/phoenix_bird.glb"></a-asset-item>
-      </a-assets>
-
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <a-entity mindar-image-target="targetIndex: 0">
+      <a-entity mindar-image-target="targetIndex: 2">
         <a-gltf-model rotation="0 0 0 " position="0 -2.0 0" scale="0.01 0.01 0.01" src="#PhoenixModel" animation-mixer>
       </a-entity>
     </a-scene>
