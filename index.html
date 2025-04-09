@@ -7,6 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
+    
+    <div id="controls" style="position: absolute; top: 10px; left: 10px; z-index: 10; display: none;">
+      <button onclick="document.querySelector('#myvideo').play()">▶️ Play</button>
+      <button onclick="document.querySelector('#myvideo').pause()">⏸️ Pause</button>
+    </div>
+
     <a-scene mindar-image="imageTargetSrc: ./assets/combine2.mind; maxTrack: 4" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="McatModel" src=" ./assets/maxwellglb.glb"></a-asset-item>
@@ -31,5 +37,31 @@
       </a-entity>
     </a-scene>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const video = document.querySelector("#myvideo");
+        const controls = document.getElementById("controls");
+    
+        const scene = document.querySelector("a-scene");
+    
+        scene.addEventListener("arReady", () => {
+          // AR is ready
+          console.log("AR Ready");
+        });
+    
+        scene.addEventListener("targetFound", () => {
+          console.log("Target Found");
+          video.play();
+          controls.style.display = "block"; // Show buttons
+        });
+    
+        scene.addEventListener("targetLost", () => {
+          console.log("Target Lost");
+          video.pause();
+          controls.style.display = "none"; // Hide buttons
+        });
+      });
+    </script>
+    
   </body>
 </html>
