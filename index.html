@@ -7,11 +7,13 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./assets/combine.mind; maxTrack: 3" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: ./assets/combine2.mind; maxTrack: 4" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="McatModel" src=" ./assets/maxwellglb.glb"></a-asset-item>
         <a-asset-item id="OcatModel" src=" ./assets/oiiaioooooiai_cat.glb"></a-asset-item>
         <a-asset-item id="PhoenixModel" src=" ./assets/phoenix_bird.glb"></a-asset-item>
+        <video id="VideoModel" src=" ./assets/city.mp4"></video>
+
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -24,6 +26,9 @@
       </a-entity>
       <a-entity mindar-image-target="targetIndex: 2">
         <a-gltf-model rotation="0 0 0 " position="0 -0.5 0" scale="0.0015 0.0015 0.0015" src="#PhoenixModel" animation-mixer>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 3">
+        <a-plane src="#VideoModel" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
       </a-entity>
     </a-scene>
 
