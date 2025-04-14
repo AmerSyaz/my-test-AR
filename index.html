@@ -6,89 +6,49 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
-
   <body>
+
     <a-scene mindar-image="imageTargetSrc: ./assets/combine2.mind; maxTrack: 4" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="McatModel" src=" ./assets/maxwellglb.glb"></a-asset-item>
         <a-asset-item id="OcatModel" src=" ./assets/oiiaioooooiai_cat.glb"></a-asset-item>
         <a-asset-item id="PhoenixModel" src=" ./assets/phoenix_bird.glb"></a-asset-item>
-        <video id="VideoModel" src=" ./assets/city.mp4" preload="auto" loop="true" crossorigin="anonymous" webkit-playsinline playsinline muted></video>
-        <img id="play-icon" src="./assets/play.png" />
-        <img id="pause-icon" src="./assets/pause.png" />
+        <video id="VideoModel" src=" ./assets/glitch.mp4" preload="auto" loop="true" crossorigin="anonymous" webkit-playsinline playsinline></video>
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse" raycaster="objects: .clickable"></a-camera>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 1">
         <a-gltf-model rotation="0 0 0 " position="0 -0.5 0" scale="0.2 0.2 0.2" src="#McatModel" animation-mixer>
       </a-entity>
-
       <a-entity mindar-image-target="targetIndex: 0">
         <a-gltf-model rotation="0 0 0 " position="0 -0.5 0" scale="2.0 2.0 2.0" src="#OcatModel" animation-mixer>
       </a-entity>
-
       <a-entity mindar-image-target="targetIndex: 2">
         <a-gltf-model rotation="0 0 0 " position="0 -0.5 0" scale="0.0015 0.0015 0.0015" src="#PhoenixModel" animation-mixer>
       </a-entity>
-
       <a-entity mindar-image-target="targetIndex: 3">
         <a-video src="#VideoModel" width="1.5" height="0.85" position="0 0 0" rotation="0 0 0" autoplay="true"></a-video>
-
-        <!-- Play button (image) -->
-        <a-image
-          id="playButton"
-          src="#play-icon"
-          position="-0.3 -0.6 0.01"
-          width="0.2"
-          height="0.2"
-          class="clickable"
-        ></a-image>
-
-        <!-- Pause button (image) -->
-        <a-image
-          id="pauseButton"
-          src="#pause-icon"
-          position="0.3 -0.6 0.01"
-          width="0.2"
-          height="0.2"
-          class="clickable"
-        ></a-image>
       </a-entity>
     </a-scene>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const video = document.querySelector("#VideoModel");
-        const playButton = document.querySelector("#playButton");
-        const pauseButton = document.querySelector("#pauseButton");
-
-        // Play button logic
-        playButton.addEventListener("click", () => {
+    
+        document.querySelector("a-scene").addEventListener("arReady", () => {
+          // AR is ready
           video.play();
-          playButton.setAttribute("visible", "false");
-          pauseButton.setAttribute("visible", "false");
         });
-
-        // Pause button logic
-        pauseButton.addEventListener("click", () => {
+    
+        document.querySelector("a-scene").addEventListener("targetFound", () => {
+          // Target detected
+          video.play();
+        });
+    
+        document.querySelector("a-scene").addEventListener("targetLost", () => {
+          // Optional: pause when target is lost
           video.pause();
-          playButton.setAttribute("visible", "true");
-          pauseButton.setAttribute("visible", "true");
-        });
-
-        // Show buttons only when needed
-        scene.addEventListener("targetFound", () => {
-          if (video.paused) {
-            playButton.setAttribute("visible", "true");
-            pauseButton.setAttribute("visible", "true");
-          }
-        });
-
-        scene.addEventListener("targetLost", () => {
-          video.pause();
-          playButton.setAttribute("visible", "false");
-          pauseButton.setAttribute("visible", "false");
         });
       });
     </script>
